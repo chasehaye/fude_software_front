@@ -12,6 +12,7 @@ import Landing from './pages/Home/Landing/Landing.tsx';
 import MailingListCreate from './pages/MailingList/MailingListCreate/MailingListCreate.tsx';
 import MailingListDetail from './pages/MailingList/MailingListDetail/MailingListDetail.tsx';
 import MailingListIndex from './pages/MailingList/MailingListIndex/MailingListIndex.tsx';
+import Profile from './pages/Profile/Profile.tsx';
 
 function App() {
   const { user, loading } = useUser();
@@ -49,6 +50,8 @@ function App() {
               element={<MailingListCreate />}
             />
             <Route path="/mailing-list/:id" element={<MailingListDetail />} />
+
+            <Route path="/profile" element={<Profile />} />
           </>
         )}
       </Routes>
