@@ -1,5 +1,12 @@
+import NavBar from '../../componenets/NavBar/NavBar';
+
 function Profile() {
-  return <div>Profile</div>;
+  return (
+    <div>
+      <NavBar />
+      Profile
+    </div>
+  );
 }
 
 export default Profile;
