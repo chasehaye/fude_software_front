@@ -1,16 +1,14 @@
-import { Routes, Route, Navigate } from 'react-router-dom';
-import { useUser } from './context/UserContext.tsx';
+import { Navigate, Route, Routes } from 'react-router-dom';
 
+import { useUser } from './context/UserContext.tsx';
+import Auth from './pages/Auth/AuthHome/AuthHome.tsx';
+import CycleToken from './pages/Auth/CycleToken/CycleToken.tsx';
+import ForgotPassword from './pages/Auth/ForgotPassword/ForgotPassword.tsx';
+import Login from './pages/Auth/Login/Login.tsx';
+import ResetPassword from './pages/Auth/ResetPassword/ResetPassword.tsx';
+import SignUp from './pages/Auth/SignUp/SignUp.tsx';
 import DashBoard from './pages/Home/Dashboard/Dashboard.tsx';
 import Landing from './pages/Home/Landing/Landing.tsx';
-
-import Auth from './pages/Auth/AuthHome/AuthHome.tsx';
-import Login from './pages/Auth/Login/Login.tsx';
-import SignUp from './pages/Auth/SignUp/SignUp.tsx';
-import ForgotPassword from './pages/Auth/ForgotPassword/ForgotPassword.tsx';
-import ResetPassword from './pages/Auth/ResetPassword/ResetPassword.tsx';
-import CycleToken from './pages/Auth/CycleToken/CycleToken.tsx';
-
 import MailingListCreate from './pages/MailingList/MailingListCreate/MailingListCreate.tsx';
 import MailingListDetail from './pages/MailingList/MailingListDetail/MailingListDetail.tsx';
 import MailingListIndex from './pages/MailingList/MailingListIndex/MailingListIndex.tsx';

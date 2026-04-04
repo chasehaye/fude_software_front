@@ -1,4 +1,5 @@
-import { createContext, useContext, useState, useEffect } from 'react';
+import { createContext, useContext, useEffect, useState } from 'react';
+
 import { getMe, logout } from '../utils/user-api.ts';
 
 export type User = {

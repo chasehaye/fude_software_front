@@ -1,9 +1,10 @@
-import { useParams, Link } from 'react-router-dom';
-import { deleteList, getList } from '../../../utils/list-api.ts';
-import { useState, useEffect } from 'react';
-import NavBar from '../../../componenets/NavBar/NavBar';
-import DeleteButton from '../../../componenets/DeleteButton/DeleteButton';
+import { useEffect, useState } from 'react';
+import { Link, useParams } from 'react-router-dom';
+
 import CancelButton from '../../../componenets/CancelButton/CancelButton';
+import DeleteButton from '../../../componenets/DeleteButton/DeleteButton';
+import NavBar from '../../../componenets/NavBar/NavBar';
+import { deleteList, getList } from '../../../utils/list-api.ts';
 
 type MailingListItem = {
   id: number;

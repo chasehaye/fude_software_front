@@ -1,4 +1,5 @@
 import { useUser } from '../../context/UserContext.tsx';
+
 interface UserDropDownProps {
   onMouseEnter?: () => void;
   onMouseLeave?: () => void;
