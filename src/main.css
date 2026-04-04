@@ -1,9 +1,9 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400&display=swap');
-@import "tailwindcss";
+@import 'tailwindcss';
 
 @theme {
- --color-edge: #2e2e2e;
- --color-hoverc: #ffffff;
+  --color-edge: #2e2e2e;
+  --color-hoverc: #ffffff;
 }
 
 :root {
@@ -11,9 +11,10 @@
   --color-hoverc: #ffffff;
 }
 
-html, body{
-    background-color: #000000;
-    color: #8f8f8f;
-    font-family: "Roboto Mono", monospace;
+html,
+body {
+  background-color: #000000;
+  color: #8f8f8f;
+  font-family: 'Roboto Mono', monospace;
 }
 /* opacity 10 for hover using hoverc color */

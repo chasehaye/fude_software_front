@@ -1,0 +1,18 @@
+# Dependency folders
+node_modules/
+dist/
+build/
+out/
+
+# Git and Editor folders
+.git/
+.vscode/
+
+# Auto-generated files (Formatting these causes merge conflicts)
+package-lock.json
+yarn.lock
+pnpm-lock.yaml
+
+# Compiled files
+*.pyc
+.DS_Store

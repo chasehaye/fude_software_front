@@ -15,7 +15,6 @@ import MailingListCreate from './pages/MailingList/MailingListCreate/MailingList
 import MailingListDetail from './pages/MailingList/MailingListDetail/MailingListDetail.tsx';
 import MailingListIndex from './pages/MailingList/MailingListIndex/MailingListIndex.tsx';
 
-
 function App() {
   const { user, loading } = useUser();
 
@@ -27,7 +26,7 @@ function App() {
     );
   }
   return (
-    <main className='flex flex-col min-h-screen w-full'>
+    <main className="flex flex-col min-h-screen w-full">
       <Routes>
         {!user ? (
           <>
@@ -39,7 +38,7 @@ function App() {
             <Route path="/forgot-password" element={<ForgotPassword />} />
             <Route path="/reset-password/:token" element={<ResetPassword />} />
           </>
-        ):(
+        ) : (
           <>
             <Route path="/" element={<Navigate to="/dashboard" replace />} />
             <Route path="*" element={<Navigate to="/dashboard" replace />} />
@@ -47,13 +46,16 @@ function App() {
             <Route path="/cycle-token" element={<CycleToken />} />
 
             <Route path="/mailing-list/index" element={<MailingListIndex />} />
-            <Route path="/mailing-list/create" element={<MailingListCreate />} />
+            <Route
+              path="/mailing-list/create"
+              element={<MailingListCreate />}
+            />
             <Route path="/mailing-list/:id" element={<MailingListDetail />} />
           </>
         )}
       </Routes>
     </main>
-  )
+  );
 }
 
-export default App
+export default App;

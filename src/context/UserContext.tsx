@@ -1,15 +1,13 @@
 import { createContext, useContext, useState, useEffect } from 'react';
 import { getMe, logout } from '../utils/user-api.ts';
 
-
-type User = {
+export type User = {
   user_email: string;
   user_name: string;
   is_admin: boolean;
 };
 
-
-type UserContextType = {
+export type UserContextType = {
   user: User | null;
   setUser: React.Dispatch<React.SetStateAction<User | null>>;
   admin: boolean;
@@ -19,6 +17,7 @@ type UserContextType = {
 };
 
 const UserContext = createContext<UserContextType | undefined>(undefined);
+
 type UserProviderProps = {
   children: React.ReactNode;
 };
@@ -36,7 +35,7 @@ export function UserProvider({ children }: UserProviderProps) {
           setUser(data);
           setAdmin(data.is_admin === true);
         }
-      } catch (err) {
+      } catch {
         setUser(null);
       } finally {
         setLoading(false);
@@ -47,9 +46,9 @@ export function UserProvider({ children }: UserProviderProps) {
 
   const logoutUser = async () => {
     try {
-      await logout(); 
-    } catch (err) {
-      console.error("Logout failed on server, clearing local state anyway");
+      await logout();
+    } catch {
+      console.error('Logout failed on server, clearing local state anyway');
     } finally {
       setUser(null);
       setAdmin(false);
@@ -57,16 +56,18 @@ export function UserProvider({ children }: UserProviderProps) {
   };
 
   return (
-    <UserContext.Provider value={{ user, setUser, admin, setAdmin, loading, logoutUser }}>
+    <UserContext.Provider
+      value={{ user, setUser, admin, setAdmin, loading, logoutUser }}
+    >
       {children}
     </UserContext.Provider>
   );
 }
-
+/* eslint-disable react-refresh/only-export-components */
 export const useUser = (): UserContextType => {
   const context = useContext(UserContext);
   if (!context) {
-    throw new Error("useUser must be used within a UserProvider");
+    throw new Error('useUser must be used within a UserProvider');
   }
   return context;
 };

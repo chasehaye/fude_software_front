@@ -1,9 +1,13 @@
-export default async function sendRequest(endpoint, method = 'GET', payload = null) {
+export default async function sendRequest(
+  endpoint,
+  method = 'GET',
+  payload = null
+) {
   const BACKEND_URL = 'http://localhost:8080';
   let url = `${BACKEND_URL}${endpoint}`;
-  const options = { 
+  const options = {
     method,
-    credentials: 'include' 
+    credentials: 'include',
   };
 
   if (payload) {
