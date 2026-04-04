@@ -10,3 +10,6 @@
 
 ## LIST BASED
 1.
+
+## API BASED
+1. adapt to type script
