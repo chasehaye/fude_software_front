@@ -1,0 +1,12 @@
+## AUTH BASED
+1. move cycle token out of being a page and into a user info page !!
+
+2. add token display upon completion of registering !!
+
+3. add loading delay to all form submits in the auth
+
+## USER PROFILE BASED
+1. add user profile info and a page link fro the nav bar
+
+## LIST BASED
+1.
