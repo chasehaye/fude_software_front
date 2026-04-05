@@ -18,7 +18,12 @@ function UserDropDown({ onMouseEnter, onMouseLeave }: UserDropDownProps) {
       <div className="border-b border-edge w-full text-center text-sm pt-2 pb-1 truncate cursor-pointer">
         {user?.user_name}
       </div>
-      <Link to="/profile" className="border-b border-edge w-full text-center text-sm pt-2 pb-1 truncate cursor-pointer hover:bg-white/20 hover:text-white">Profile</Link>
+      <Link
+        to="/profile"
+        className="border-b border-edge w-full text-center text-sm pt-2 pb-1 truncate cursor-pointer hover:bg-white/20 hover:text-white"
+      >
+        Profile
+      </Link>
       <div
         onClick={logoutUser}
         className="border-b border-edge w-full text-center text-sm py-1 hover:bg-red-900/20 hover:text-red-500 transition-all cursor-pointer"
