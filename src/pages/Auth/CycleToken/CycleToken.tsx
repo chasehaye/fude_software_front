@@ -1,6 +1,7 @@
-import { cycleToken } from '../../../utils/user-api.ts';
 import { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
+
+import { cycleToken } from '../../../utils/user-api.ts';
 
 function CycleToken() {
   const navigate = useNavigate();

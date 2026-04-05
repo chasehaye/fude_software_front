@@ -1,4 +1,5 @@
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
+
 import { useUser } from '../../context/UserContext.tsx';
 
 function MobileMenu() {
@@ -27,6 +28,12 @@ function MobileMenu() {
       <div className="flex-1 border-b border-edge py-4 text-center text-md truncate">
         Service_Status
       </div>
+      <Link
+        to="/profile"
+        className="flex-1 border-b border-edge py-4 text-center text-md truncate block"
+      >
+        Profile
+      </Link>
       <div
         onClick={logoutUser}
         className="flex-1 border-b border-edge py-4 text-center text-md truncate"

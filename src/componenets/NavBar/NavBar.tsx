@@ -1,7 +1,8 @@
+import { useRef, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { useState, useRef } from 'react';
-import UserDropDown from '../UserDropDown/UserDropDown.tsx';
+
 import MobileMenu from '../MobileMenu/MobileMenu.tsx';
+import UserDropDown from '../UserDropDown/UserDropDown.tsx';
 
 function NavBar() {
   const navigate = useNavigate();
