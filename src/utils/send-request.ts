@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 type HttpMethod = 'GET' | 'POST' | 'PUT' | 'PATCH' | 'DELETE';
 
 interface Payload {
@@ -9,7 +10,6 @@ export default async function sendRequest(
   method: HttpMethod = 'GET',
   payload: Payload | null = null
 ): Promise<any> {
-
   const BACKEND_URL = 'http://localhost:8080';
   let url = `${BACKEND_URL}${endpoint}`;
 

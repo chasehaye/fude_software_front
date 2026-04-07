@@ -7,9 +7,9 @@ interface SubscriberPayload {
 }
 
 export function contactSubscribe(payload: SubscriberPayload, listId: string) {
-    return sendRequest(`${BASE_URL}/signup/${listId}`, 'POST', payload)
+  return sendRequest(`${BASE_URL}/signup/${listId}`, 'POST', payload);
 }
 
 export function contactSubscribeConfirm(payload: SubscriberPayload) {
-    return sendRequest(`${BASE_URL}/signup/confirm`, 'GET', payload)
+  return sendRequest(`${BASE_URL}/signup/confirm`, 'GET', payload);
 }
