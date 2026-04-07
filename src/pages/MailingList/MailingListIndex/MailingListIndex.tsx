@@ -34,7 +34,7 @@ function MailingListIndex() {
       try {
         const payload = {
           page: page,
-          cnt_per_page: countPerPage,
+          count_per_page: countPerPage,
         };
         const data = await indexList(payload);
         if (data) {

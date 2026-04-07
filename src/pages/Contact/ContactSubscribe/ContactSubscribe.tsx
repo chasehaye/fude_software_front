@@ -23,7 +23,7 @@ function ContactSubscribe() {
     try {
       setError('');
       const payload = { email: email };
-      await contactSubscribe(payload, listId);
+      await contactSubscribe(payload, listId as string);
       setConfirmed(true);
     } catch {
       setError(`Error: Unable to subscribe ${email}, link may be invalid`);

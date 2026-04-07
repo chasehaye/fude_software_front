@@ -58,9 +58,9 @@ function ResetPassword() {
     }
     try {
       const payload = {
-        new_password: formData.newPassword,
+        password: formData.newPassword,
       };
-      await resetPassword(payload, token);
+      await resetPassword(payload, token as string);
       setIsSubmitted(true);
     } catch {
       setFormData({

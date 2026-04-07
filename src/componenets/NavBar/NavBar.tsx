@@ -22,7 +22,7 @@ function NavBar() {
 
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   return (
-    <div className="sticky top-0 z-50 bg-black relative select-none w-full">
+    <div className="uppercase sticky top-0 z-50 bg-black relative select-none w-full">
       <nav className="flex justify-between px-4 mt-2 pb-2  border-b border-edge sm:hidden">
         <svg
           xmlns="http://www.w3.org/2000/svg"

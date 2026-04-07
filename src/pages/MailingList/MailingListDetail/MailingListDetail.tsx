@@ -21,13 +21,13 @@ function MailingListDetail() {
   const { id } = useParams();
   const [status, setStatus] = useState('idle'); // 'idle' | 'deleting' | 'success' | 'confirming'
   const [list, setList] = useState<MailingListItem | null>(null);
-  // const apiUrl = import.meta.env.VITE_API_URL;
+  const apiUrl = import.meta.env.VITE_FRONTEND_URL;
 
   useEffect(() => {
     async function fetchList() {
       try {
         setStatus('loading');
-        const data = await getList(id);
+        const data = await getList(id as string);
         setList(data);
         setStatus('idle');
       } catch {
@@ -40,7 +40,7 @@ function MailingListDetail() {
   async function handleDelete() {
     try {
       setStatus('deleting');
-      await deleteList(id);
+      await deleteList(id as string);
       setStatus('success');
     } catch {
       alert('Failed to delete the list. Please try again.');
@@ -51,7 +51,6 @@ function MailingListDetail() {
   if (status === 'success') {
     return (
       <>
-        <NavBar />
         <div className="flex flex-col items-center justify-center h-64 text-center">
           <h2 className="text-2xl font-bold mb-2">Deleted</h2>
           <p className="mb-6">
@@ -127,10 +126,15 @@ function MailingListDetail() {
         </div>
 
         <div className="mt-8">
-          <p className="text-white">Internal_Name: {list?.name}</p>
-          <p className="text-white">Public_Name: {list?.public_facing_name}</p>
-          <p className="text-white">Created At: {list?.created_at}</p>
-          <p className="text-white">Public ID: {list?.PublicID}</p>
+          <p>Internal_Name: {list?.name}</p>
+          <p>Public_Name: {list?.public_facing_name}</p>
+          <p>Created_At: {list?.created_at}</p>
+          <p>Public_ID: {list?.PublicID}</p>
+          <Link to={`/subscribe/${list?.PublicID}`}>
+            <p className="hover:text-white">
+              Subscribe_To_List_Link: {apiUrl}/subscribe/{list?.PublicID}
+            </p>
+          </Link>
         </div>
       </div>
     </>

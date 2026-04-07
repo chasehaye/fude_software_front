@@ -7,6 +7,8 @@ import ForgotPassword from './pages/Auth/ForgotPassword/ForgotPassword.tsx';
 import Login from './pages/Auth/Login/Login.tsx';
 import ResetPassword from './pages/Auth/ResetPassword/ResetPassword.tsx';
 import SignUp from './pages/Auth/SignUp/SignUp.tsx';
+import ContactSubscribe from './pages/Contact/ContactSubscribe/ContactSubscribe.tsx';
+import ContactSubscribeConfirm from './pages/Contact/ContactSubscribeConfrim/ContactSubscribeConfirm.tsx';
 import DashBoard from './pages/Home/Dashboard/Dashboard.tsx';
 import Landing from './pages/Home/Landing/Landing.tsx';
 import MailingListCreate from './pages/MailingList/MailingListCreate/MailingListCreate.tsx';
@@ -27,6 +29,11 @@ function App() {
   return (
     <main className="flex flex-col min-h-screen w-full">
       <Routes>
+        <Route path="/subscribe/:listId" element={<ContactSubscribe />} />
+        <Route
+          path="/confirm-subscription"
+          element={<ContactSubscribeConfirm />}
+        />
         {!user ? (
           <>
             <Route path="/" element={<Landing />} />

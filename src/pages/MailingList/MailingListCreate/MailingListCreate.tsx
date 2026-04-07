@@ -44,7 +44,7 @@ function MailingListCreate() {
     try {
       const data = await createList({
         name: formData.name_internal,
-        listtype: formData.list_type,
+        list_type: formData.list_type,
         public_facing_name: formData.name_external,
       });
       if (data) {
