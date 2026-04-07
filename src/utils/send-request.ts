@@ -1,13 +1,23 @@
+type HttpMethod = 'GET' | 'POST' | 'PUT' | 'PATCH' | 'DELETE';
+
+interface Payload {
+  [key: string]: any;
+}
+
 export default async function sendRequest(
-  endpoint,
-  method = 'GET',
-  payload = null
-) {
+  endpoint: string,
+  method: HttpMethod = 'GET',
+  payload: Payload | null = null
+): Promise<any> {
+
   const BACKEND_URL = 'http://localhost:8080';
   let url = `${BACKEND_URL}${endpoint}`;
-  const options = {
+
+  const options: RequestInit = {
     method,
     credentials: 'include',
+    headers: undefined,
+    body: undefined,
   };
 
   if (payload) {
@@ -19,6 +29,7 @@ export default async function sendRequest(
       options.body = JSON.stringify(payload);
     }
   }
+
   const res = await fetch(url, options);
   if (res.ok) return res.json();
   const err = await res.json();

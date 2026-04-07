@@ -2,23 +2,27 @@ import sendRequest from './send-request.js';
 
 const BASE_URL = '/api/user';
 
-export function signUp(userData) {
+interface UserData {
+  [key: string]: string;
+}
+
+export function signUp(userData: UserData) {
   return sendRequest(`${BASE_URL}/register`, 'POST', userData);
 }
 
-export function login(userData) {
+export function login(userData: UserData) {
   return sendRequest(`${BASE_URL}/login`, 'POST', userData);
 }
 
-export function forgotPassword(userData) {
+export function forgotPassword(userData: UserData) {
   return sendRequest(`${BASE_URL}/forgot-password`, 'POST', userData);
 }
 
-export function resetPassword(userData, token) {
+export function resetPassword(userData: UserData, token: string) {
   return sendRequest(`${BASE_URL}/change-password/${token}`, 'POST', userData);
 }
 
-export function cycleToken(userData) {
+export function cycleToken(userData: UserData) {
   return sendRequest(`${BASE_URL}/cycle-token`, 'POST', userData);
 }
 
