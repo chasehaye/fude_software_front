@@ -1,6 +1,6 @@
 # React + TypeScript + Vite
 Interested in contributing to this project get involved in the community at the following link:
-https://discord.gg/js4NQzBsjQ
+`https://discord.gg/js4NQzBsjQ`
 
 ## Prerequisites
 Node version -> 24.14.1
