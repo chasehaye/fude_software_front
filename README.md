@@ -2,6 +2,10 @@
 Interested in contributing to this project get involved in the community at the following link:
 https://discord.gg/js4NQzBsjQ
 
+## Prerequisites
+Node version -> 24.14.1
+Npm version -> 11.11.0
+
 ## To get started locally:
 First get your own local copy of the code via:
 `git clone https://github.com/chasehaye/fude_software_front.git`
