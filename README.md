@@ -230,7 +230,7 @@ This would not be what it is today without:
 <br />
 <br />
 <a href="https://github.com/morrah77">
-<img src="https://github.com/morrah77.png" width="60" height="60" style="border-radius:50%;" alt="morrah77" />
+<img src="https://github.com/morrah77.png" class="w-16 h-16 rounded-full" alt="morrah77"/>
 </a>
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
