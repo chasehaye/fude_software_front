@@ -229,9 +229,7 @@ Project Links:
 This would not be what it is today without:
 <br />
 <br />
-<a href="https://github.com/morrah77">
-<img src="https://github.com/morrah77.png" width="60" height="60" style="border-radius:50%;" alt="morrah77" />
-</a>
+[![morrah77](https://github.com/morrah77.png)](https://github.com/morrah77)
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
