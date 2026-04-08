@@ -1,5 +1,5 @@
 <a id="readme-top"></a>
- 
+
 <br />
 <div align="center">
 
@@ -18,8 +18,6 @@
     <a href="https://discord.gg/zwPDU2gcx9">Join the Discord</a>
   </p>
 </div>
-
-
 
 <!-- TABLE OF CONTENTS -->
 <details>
@@ -49,7 +47,6 @@
   </ol>
 </details>
 
-
 ## About The Project - Frontend
 
 This project is split into two different repositories a front-end and a back-end. The links can be found above the tables of contents, in the title section.
@@ -60,35 +57,32 @@ The motivation behind this project was two part: this was to address the need fo
 Even in its early stages, the project has demonstrated the importance of collaboration inside of development. Contributions and feedback from other developers have already had a meaningful impact on its direction and quality. My goal is for this project to serve not only as a useful tool, but also as a space for developers to practice real world collaboration and grow their skills together. I hope that if this is a project you are interested in joining you find it as beneficial as I have.
 
 Requirements:
-* Your time is your own. As an open source project you are free to put in as much or as little as you are able.
-* You should not sacrifice other aspects of your life for development of this project.
-* Have fun and communicate how you would like to participate
 
-
+- Your time is your own. As an open source project you are free to put in as much or as little as you are able.
+- You should not sacrifice other aspects of your life for development of this project.
+- Have fun and communicate how you would like to participate
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
-
-
 
 ### Built With
 
-* [![TypeScript][TypeScript]][Typescript-url]
-* [![Tailwind CSS][TailwindCSS]][TailwindCSS-url]
-* [![React][React.js]][React-url]
-* [![Go][Go.dev]][Go-url]
-* [![GORM][GORM.io]][GORM-url]
-* [![PostgreSQL][Postgres]][Postgres-url]
+- [![TypeScript][TypeScript]][Typescript-url]
+- [![Tailwind CSS][TailwindCSS]][TailwindCSS-url]
+- [![React][React.js]][React-url]
+- [![Go][Go.dev]][Go-url]
+- [![GORM][GORM.io]][GORM-url]
+- [![PostgreSQL][Postgres]][Postgres-url]
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
-
-
 <!-- GETTING STARTED -->
+
 ## Getting Started
 
 Follow these steps to set up the frontend locally for development.
 
 ### Prerequisites
+
 Node version -> `24.14.1`
 <br />
 Npm version -> `11.11.0`
@@ -124,11 +118,11 @@ After correctly setting up all of the required development environments follow t
 
 Make sure to format code correctly before attempting to submit your contribution
 
-Fix formatting: 
+Fix formatting:
 <br />
 `npm run check`
 
-Check for TypeScript errors: 
+Check for TypeScript errors:
 <br />
 `npm run format`
 
@@ -140,9 +134,6 @@ Please follow the [Contributing](#contributing) guidelines when submitting chang
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
-
-
-
 <!-- ## Usage
 
 In the future this will contain screen shots demos and maybe a video
@@ -152,34 +143,30 @@ _For more examples, please refer to the [Documentation](https://example.com)_
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p> -->
 
-
-
-
 ## Roadmap
+
 <!-- x to check off -->
+
 - [ ] Improve Documentation
 - [ ] Deploy
 - [ ] Implement email verification for user registration
 - [ ] Store API token as a hash instead of plain text
 - [ ] Design a dashboard api
-    - [ ] List statistics
-    - [ ] Outbound email success/fail rates
+  - [ ] List statistics
+  - [ ] Outbound email success/fail rates
 - [ ] Impelement mailing list functionality
-    - [ ] Create
-    - [ ] Subscribe
-    - [ ] Send an email
+  - [ ] Create
+  - [ ] Subscribe
+  - [ ] Send an email
 - [ ] Look into deployment options
-    - [ ] Terraform for backend hosting
-    - [ ] AWS s3 bucket for front end hosting
-    
+  - [ ] Terraform for backend hosting
+  - [ ] AWS s3 bucket for front end hosting
 
 See the [open issues front](https://github.com/chasehaye/fude_software_front/issues) for a full list of proposed features (and known issues).
 
 See the [open issues back](https://github.com/chasehaye/log_relay/issues) for a full list of proposed features (and known issues).
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
-
-
 
 ## Contributing
 
@@ -195,11 +182,12 @@ Don't forget to give the project a star! Thanks again!
 5. Open a Pull Request
 
 ### Top contributors:
+
 Front End:
 <br />
 <br />
 <a href="https://github.com/chasehaye/fude_software_front/graphs/contributors">
-  <img src="https://contrib.rocks/image?repo=chasehaye/fude_software_front" alt="contrib.rocks image" />
+<img src="https://contrib.rocks/image?repo=chasehaye/fude_software_front" alt="contrib.rocks image" />
 </a>
 <br />
 <br />
@@ -207,73 +195,58 @@ Back End:
 <br />
 <br />
 <a href="https://github.com/chasehaye/log_relay/graphs/contributors">
-  <img src="https://contrib.rocks/image?repo=chasehaye/log_relay" alt="contrib.rocks image" />
+<img src="https://contrib.rocks/image?repo=chasehaye/log_relay" alt="contrib.rocks image" />
 </a>
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
-
-
-
 ## License
 
 This project is released under the **Unlicense**.  
-You are free to use, modify, and distribute this code for any purpose.  
+You are free to use, modify, and distribute this code for any purpose.
 
 See [`LICENSE.txt`](LICENSE.txt) for more details.
+
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
-
-
-
 
 ## Contact
 
 Chase Haye - chasehaye.dev@gmail.com
 
-Project Links: 
-    <a href="https://github.com/chasehaye/fude_software_front">Front End Repo</a>
-    &middot;
-    <a href="https://github.com/chasehaye/log_relay">Back End Repo</a>
-
+Project Links:
+<a href="https://github.com/chasehaye/fude_software_front">Front End Repo</a>
+&middot;
+<a href="https://github.com/chasehaye/log_relay">Back End Repo</a>
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
-
-
-
 ## Acknowledgments
 
-* [Link to resource](https://example.com)
+- [Link to resource](https://example.com)
 
-## Special thanks 
+## Special thanks
+
 This would not be what it is today without:
 <br />
 <br />
 <a href="https://github.com/morrah77">
-  <img src="https://github.com/morrah77.png" width="60px" style="border-radius:50%" alt="morrah77"/>
+<img src="https://github.com/morrah77.png" width="60" height="60" style="border-radius:50%;" alt="morrah77" />
 </a>
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
-
-
 
 <!-- MARKDOWN LINKS & IMAGES -->
 <!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
 
 [TypeScript]: https://img.shields.io/badge/TypeScript-3178C6?style=for-the-badge&logo=typescript&logoColor=white
 [TypeScript-url]: https://www.typescriptlang.org/
-
 [TailwindCSS]: https://img.shields.io/badge/Tailwind_CSS-38B2AC?style=for-the-badge&logo=tailwind-css&logoColor=white
 [TailwindCSS-url]: https://tailwindcss.com/
-
 [React.js]: https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB
 [React-url]: https://reactjs.org/
-
 [Go.dev]: https://img.shields.io/badge/Go-00ADD8?style=for-the-badge&logo=go&logoColor=white
 [Go-url]: https://go.dev/
-
 [GORM.io]: https://img.shields.io/badge/GORM-000000?style=for-the-badge
 [GORM-url]: https://gorm.io/
-
 [Postgres]: https://img.shields.io/badge/PostgreSQL-336791?style=for-the-badge&logo=postgresql&logoColor=white
 [Postgres-url]: https://www.postgresql.org/
