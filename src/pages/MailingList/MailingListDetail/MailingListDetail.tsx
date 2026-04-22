@@ -14,7 +14,7 @@ type MailingListItem = {
   created_at: string;
   updated_at: string;
   subscriber_count: number;
-  PublicID?: string;
+  public_id?: string;
 };
 
 function MailingListDetail() {
@@ -129,10 +129,10 @@ function MailingListDetail() {
           <p>Internal_Name: {list?.name}</p>
           <p>Public_Name: {list?.public_facing_name}</p>
           <p>Created_At: {list?.created_at}</p>
-          <p>Public_ID: {list?.PublicID}</p>
-          <Link to={`/subscribe/${list?.PublicID}`}>
-            <p className="hover:text-white">
-              Subscribe_To_List_Link: {apiUrl}/subscribe/{list?.PublicID}
+          <p>Public_ID: {list?.public_id}</p>
+          <Link to={`/subscribe/${list?.public_id}`}>
+            <p>
+              Subscribe_To_List_Link: <span className="hover:text-white">{apiUrl}/subscribe/{list?.public_id}</span>
             </p>
           </Link>
         </div>
