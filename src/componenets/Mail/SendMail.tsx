@@ -75,7 +75,7 @@ function SendMail() {
         onChange={handleChange}
         isRequired={true}
       />
-      <FormSubmitButton buttonText={'Create List'} isInvalid={loading} />
+      <FormSubmitButton buttonText={'Send Mail'} isInvalid={loading} />
       {formData.error && <FormError errorText={formData.error} />}
     </form>
   );
