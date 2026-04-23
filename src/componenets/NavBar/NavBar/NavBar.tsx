@@ -62,10 +62,16 @@ function NavBar() {
           FUDE<span className="hidden lg:inline">_SOFTWARE</span>
         </div>
         <div className="flex justify-between w-[70%] border-edge cursor-pointer">
-          <div className="flex-1 border-l border-edge pt-4 text-center text-xs truncate hover:bg-hoverc/10 cursor-pointer">
+          <div
+            onClick={() => navigate('/maintenance')}
+            className="flex-1 border-l border-edge pt-4 text-center text-xs truncate hover:bg-hoverc/10 cursor-pointer"
+          >
             API<span className="hidden lg:inline">_Management</span>
           </div>
-          <div className="flex-1 border-l border-edge pt-4 text-center text-xs truncate hover:bg-hoverc/10 cursor-pointer">
+          <div
+            onClick={() => navigate('/maintenance')}
+            className="flex-1 border-l border-edge pt-4 text-center text-xs truncate hover:bg-hoverc/10 cursor-pointer"
+          >
             <span className="hidden lg:inline">Manage_</span>Account
           </div>
           <div
@@ -74,15 +80,24 @@ function NavBar() {
           >
             Mailing<span className="hidden lg:inline">_List</span>
           </div>
-          <div className="flex-1 border-l border-edge pt-4 text-center text-xs truncate hover:bg-hoverc/10 cursor-pointer">
+          <div
+            onClick={() => navigate('/maintenance')}
+            className="flex-1 border-l border-edge pt-4 text-center text-xs truncate hover:bg-hoverc/10 cursor-pointer"
+          >
             <span className="lg:hidden">Inquiries</span>
             <span className="hidden lg:inline">Inbound_Inquires</span>
           </div>
-          <div className="flex-1 border-l border-edge pt-4 text-center text-xs truncate hover:bg-hoverc/10 cursor-pointer">
+          <div
+            onClick={() => navigate('/maintenance')}
+            className="flex-1 border-l border-edge pt-4 text-center text-xs truncate hover:bg-hoverc/10 cursor-pointer"
+          >
             <span className="lg:hidden">Bugs</span>
             <span className="hidden lg:inline">Bug_Reports</span>
           </div>
-          <div className="flex-1 border-l border-edge pt-4 text-center text-xs truncate hover:bg-hoverc/10 cursor-pointer">
+          <div
+            onClick={() => navigate('/maintenance')}
+            className="flex-1 border-l border-edge pt-4 text-center text-xs truncate hover:bg-hoverc/10 cursor-pointer"
+          >
             <span className="lg:hidden">Services</span>
             <span className="hidden lg:inline">Service_Status</span>
           </div>

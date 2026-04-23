@@ -1,4 +1,4 @@
-import NavBar from '../../../componenets/NavBar/NavBar.tsx';
+import NavBar from '../../../componenets/NavBar/NavBar/NavBar.tsx';
 import { useUser } from '../../../context/UserContext.tsx';
 
 function DashBoard() {

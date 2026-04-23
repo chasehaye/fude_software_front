@@ -90,22 +90,31 @@ Npm version -> `11.11.0`
 ### Front-End Setup
 
 Clone the repository:
+
 ```
 git clone https://github.com/chasehaye/fude_software_front.git
 ```
+
 Move into the correct directory:
+
 ```
 cd fude_software_front
 ```
+
 Configure your environment file:
+
 ```
 cp .env.template .env
 ```
+
 Install dependencies:
+
 ```
 npm install
 ```
+
 Start the development server:
+
 ```
 npm run dev
 ```
@@ -127,18 +136,21 @@ Make sure to format code correctly before attempting to submit your contribution
 
 Fix formatting:
 <br />
+
 ```
 npm run check
 ```
 
 Check for TypeScript errors:
 <br />
+
 ```
 npm run format
 ```
 
 Verify that the project builds correctly:
 <br />
+
 ```
 npm run build
 ```

@@ -1,16 +1,22 @@
 import { Link, useNavigate } from 'react-router-dom';
 
-import { useUser } from '../../context/UserContext.tsx';
+import { useUser } from '../../../context/UserContext';
 
 function MobileMenu() {
   const navigate = useNavigate();
   const { logoutUser } = useUser();
   return (
     <div className="w-full sm:hidden">
-      <div className="flex-1 border-b border-edge py-4 text-center text-md truncate">
+      <div
+        onClick={() => navigate('/maintenance')}
+        className="flex-1 border-b border-edge py-4 text-center text-md truncate"
+      >
         API_Management
       </div>
-      <div className="flex-1 border-b border-edge py-4 text-center text-md truncate">
+      <div
+        onClick={() => navigate('/maintenance')}
+        className="flex-1 border-b border-edge py-4 text-center text-md truncate"
+      >
         Manage_Account
       </div>
       <div
@@ -19,13 +25,22 @@ function MobileMenu() {
       >
         Mailing_List
       </div>
-      <div className="flex-1 border-b border-edge py-4 text-center text-md truncate">
+      <div
+        onClick={() => navigate('/maintenance')}
+        className="flex-1 border-b border-edge py-4 text-center text-md truncate"
+      >
         Inbound_Inquires
       </div>
-      <div className="flex-1 border-b border-edge py-4 text-center text-md truncate">
+      <div
+        onClick={() => navigate('/maintenance')}
+        className="flex-1 border-b border-edge py-4 text-center text-md truncate"
+      >
         Bug_Reports
       </div>
-      <div className="flex-1 border-b border-edge py-4 text-center text-md truncate">
+      <div
+        onClick={() => navigate('/maintenance')}
+        className="flex-1 border-b border-edge py-4 text-center text-md truncate"
+      >
         Service_Status
       </div>
       <Link

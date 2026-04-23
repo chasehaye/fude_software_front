@@ -1,10 +1,10 @@
 import { useState } from 'react';
 import { useParams } from 'react-router-dom';
 
-import FormError from '../../../componenets/FormError/FormError';
-import FormField from '../../../componenets/FormField/FormField';
-import FormHeader from '../../../componenets/FormHeader/FormHeader';
-import FormSubmitButton from '../../../componenets/FormSubmitButton/FormSubmitButton';
+import FormError from '../../../componenets/Form/FormError/FormError';
+import FormField from '../../../componenets/Form/FormField/FormField';
+import FormHeader from '../../../componenets/Form/FormHeader/FormHeader';
+import FormSubmitButton from '../../../componenets/Form/FormSubmitButton/FormSubmitButton';
 import { contactSubscribe } from '../../../utils/contact-api';
 
 function ContactSubscribe() {

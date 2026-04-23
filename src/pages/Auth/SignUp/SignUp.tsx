@@ -1,10 +1,10 @@
 import { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 
-import FormError from '../../../componenets/FormError/FormError.tsx';
-import FormField from '../../../componenets/FormField/FormField.tsx';
-import FormHeader from '../../../componenets/FormHeader/FormHeader.tsx';
-import FormSubmitButton from '../../../componenets/FormSubmitButton/FormSubmitButton.tsx';
+import FormError from '../../../componenets/Form/FormError/FormError.tsx';
+import FormField from '../../../componenets/Form/FormField/FormField.tsx';
+import FormHeader from '../../../componenets/Form/FormHeader/FormHeader.tsx';
+import FormSubmitButton from '../../../componenets/Form/FormSubmitButton/FormSubmitButton.tsx';
 import { useUser } from '../../../context/UserContext.tsx';
 import { signUp } from '../../../utils/user-api.ts';
 

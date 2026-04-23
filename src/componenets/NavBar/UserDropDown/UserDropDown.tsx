@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
 
-import { useUser } from '../../context/UserContext.tsx';
+import { useUser } from '../../../context/UserContext';
 
 interface UserDropDownProps {
   onMouseEnter?: () => void;

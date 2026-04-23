@@ -1,9 +1,9 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
 
-import FormField from '../../../componenets/FormField/FormField.tsx';
-import FormHeader from '../../../componenets/FormHeader/FormHeader.tsx';
-import FormSubmitButton from '../../../componenets/FormSubmitButton/FormSubmitButton.tsx';
+import FormField from '../../../componenets/Form/FormField/FormField.tsx';
+import FormHeader from '../../../componenets/Form/FormHeader/FormHeader.tsx';
+import FormSubmitButton from '../../../componenets/Form/FormSubmitButton/FormSubmitButton.tsx';
 import { forgotPassword } from '../../../utils/user-api.ts';
 
 function ForgotPassword() {

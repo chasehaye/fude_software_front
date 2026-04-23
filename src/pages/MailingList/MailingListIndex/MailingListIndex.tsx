@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
-import NavBar from '../../../componenets/NavBar/NavBar.tsx';
+import NavBar from '../../../componenets/NavBar/NavBar/NavBar.tsx';
 import { useUser } from '../../../context/UserContext.tsx';
 import { indexList } from '../../../utils/list-api.ts';
 

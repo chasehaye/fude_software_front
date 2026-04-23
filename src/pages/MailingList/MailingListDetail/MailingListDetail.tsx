@@ -3,7 +3,8 @@ import { Link, useParams } from 'react-router-dom';
 
 import CancelButton from '../../../componenets/CancelButton/CancelButton';
 import DeleteButton from '../../../componenets/DeleteButton/DeleteButton';
-import NavBar from '../../../componenets/NavBar/NavBar';
+import SendMail from '../../../componenets/Mail/SendMail.tsx';
+import NavBar from '../../../componenets/NavBar/NavBar/NavBar.tsx';
 import { deleteList, getList } from '../../../utils/list-api.ts';
 
 type MailingListItem = {
@@ -128,13 +129,20 @@ function MailingListDetail() {
         <div className="mt-8">
           <p>Internal_Name: {list?.name}</p>
           <p>Public_Name: {list?.public_facing_name}</p>
-          <p>Created_At: {list?.created_at}</p>
-          <p>Public_ID: {list?.public_id}</p>
+          <p className="break-words">Created_At: {list?.created_at}</p>
+          <p className="break-words">Public_ID: {list?.public_id}</p>
           <Link to={`/subscribe/${list?.public_id}`}>
-            <p>
-              Subscribe_To_List_Link: <span className="hover:text-white">{apiUrl}/subscribe/{list?.public_id}</span>
+            <p className="break-words">
+              Subscribe_To_List_Link:{' '}
+              <span className="hover:text-white">
+                {apiUrl}/subscribe/{list?.public_id}
+              </span>
             </p>
           </Link>
+        </div>
+
+        <div className="flex flex-col md:flex-row justify-center items-start border-t border-edge pb-6 mt-10 pt-10">
+          <SendMail />
         </div>
       </div>
     </>

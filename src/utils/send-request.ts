@@ -29,7 +29,6 @@ export default async function sendRequest(
       options.body = JSON.stringify(payload);
     }
   }
-
   const res = await fetch(url, options);
   if (res.ok) return res.json();
   const err = await res.json();

@@ -1,11 +1,11 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
-import FormError from '../../../componenets/FormError/FormError.tsx';
-import FormField from '../../../componenets/FormField/FormField.tsx';
-import FormHeader from '../../../componenets/FormHeader/FormHeader.tsx';
-import FormSubmitButton from '../../../componenets/FormSubmitButton/FormSubmitButton.tsx';
-import NavBar from '../../../componenets/NavBar/NavBar.tsx';
+import FormError from '../../../componenets/Form/FormError/FormError.tsx';
+import FormField from '../../../componenets/Form/FormField/FormField.tsx';
+import FormHeader from '../../../componenets/Form/FormHeader/FormHeader.tsx';
+import FormSubmitButton from '../../../componenets/Form/FormSubmitButton/FormSubmitButton.tsx';
+import NavBar from '../../../componenets/NavBar/NavBar/NavBar.tsx';
 import { createList } from '../../../utils/list-api.ts';
 
 // public facing name
@@ -30,7 +30,9 @@ function MailingListCreate() {
   const isInvalid =
     !formData.name_internal.trim() || !formData.name_external.trim();
 
-  function handleChange(e: React.ChangeEvent<HTMLInputElement>) {
+  function handleChange(
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+  ) {
     setFormData({
       ...formData,
       [e.target.name]: e.target.value,
