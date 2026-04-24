@@ -38,10 +38,10 @@ function CycleToken() {
     <>
       <div className="border-b border-edge text-center h-14 flex justify-between w-full flex-shrink-0">
         <Link
-          to="/"
+          to="/profile"
           className="pl-10 md:px-20 md:border-r md:border-edge pt-4 cursor-pointer select-none hover:bg-hoverc/10 transition-all hover:text-hoverc"
         >
-          Home
+          Return
         </Link>
         <div className="pr-10 md:px-20 md:border-l md:border-edge pt-4 whitespace-nowrap select-none">
           Token Management

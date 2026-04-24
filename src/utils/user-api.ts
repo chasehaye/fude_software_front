@@ -33,3 +33,15 @@ export function logout() {
 export function getMe() {
   return sendRequest(`${BASE_URL}/me`);
 }
+
+export function updateUsername(userData: UserData) {
+  return sendRequest(`${BASE_URL}/change/username`, 'PUT', userData);
+}
+
+export function updateEmail(userData: UserData) {
+  return sendRequest(`${BASE_URL}/change/email`, 'PUT', userData);
+}
+
+export function deleteUser(userData: UserData) {
+  return sendRequest(`${BASE_URL}/account/delete`, 'DELETE', userData);
+}
