@@ -7,6 +7,12 @@ import SendMail from '../../../componenets/Mail/SendMail.tsx';
 import NavBar from '../../../componenets/NavBar/NavBar/NavBar.tsx';
 import { deleteList, getList } from '../../../utils/list-api.ts';
 
+type Message = {
+  id: number;
+  header: string;
+  body: string;
+};
+
 type MailingListItem = {
   id: number;
   name: string;
@@ -16,6 +22,7 @@ type MailingListItem = {
   updated_at: string;
   subscriber_count: number;
   public_id?: string;
+  messages?: Message[];
 };
 
 function MailingListDetail() {
@@ -140,9 +147,20 @@ function MailingListDetail() {
             </p>
           </Link>
         </div>
-
-        <div className="flex flex-col md:flex-row justify-center items-start border-t border-edge pb-6 mt-10 pt-10">
-          <SendMail />
+        <div className='flex flex-col lg:flex-row mt-10 pt-10 border-t border-edge justify-center gap-x-10'>
+          <div className="flex flex-col md:flex-row justify-center items-start lg:w-[50%] pb-10">
+            <SendMail />
+          </div> 
+          <div className='flex flex-col md:flex-row justify-center items-start lg:w-[50%]'>
+            <div className="flex flex-col w-full gap-4">
+              {list?.messages?.map((msg) => (
+                <div key={msg.id} className="border border-edge p-3">
+                  <p className="font-semibold">{msg.header}</p>
+                  <p className="text-sm opacity-80">{msg.body}</p>
+                </div>
+              ))}
+            </div>
+          </div>
         </div>
       </div>
     </>
