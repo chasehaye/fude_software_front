@@ -13,6 +13,10 @@ type Message = {
   body: string;
 };
 
+type Subscribers = {
+  email: string;
+};
+
 type MailingListItem = {
   id: number;
   name: string;
@@ -23,6 +27,7 @@ type MailingListItem = {
   subscriber_count: number;
   public_id?: string;
   messages?: Message[];
+  subscribers?: Subscribers[];
 };
 
 function MailingListDetail() {
@@ -136,6 +141,7 @@ function MailingListDetail() {
         <div className="mt-8">
           <p>Internal_Name: {list?.name}</p>
           <p>Public_Name: {list?.public_facing_name}</p>
+          <p>Subscriber_Count: {list?.subscribers?.length}</p>
           <p className="break-words">Created_At: {list?.created_at}</p>
           <p className="break-words">Public_ID: {list?.public_id}</p>
           <Link to={`/subscribe/${list?.public_id}`}>
@@ -147,7 +153,7 @@ function MailingListDetail() {
             </p>
           </Link>
         </div>
-        <div className='flex flex-col lg:flex-row mt-10 pt-10 border-t border-edge justify-center gap-x-10'>
+        <div className='flex flex-col lg:flex-row-reverse mt-10 pt-10 border-t border-edge justify-center gap-x-10'>
           <div className="flex flex-col md:flex-row justify-center items-start lg:w-[50%] pb-10">
             <SendMail />
           </div> 

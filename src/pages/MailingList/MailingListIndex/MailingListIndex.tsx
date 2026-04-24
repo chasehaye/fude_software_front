@@ -64,6 +64,7 @@ function MailingListIndex() {
       </div>
 
       <div className="p-10 w-full text-center">
+        <h1 className='text-[2rem] text-white pb-2'>Mailing_Lists</h1>
         <div className="w-full text-center">
           {loading ? (
             <p>LOADING_DATA...</p>
@@ -75,9 +76,6 @@ function MailingListIndex() {
                 className="border-b border-edge py-4 cursor-pointer hover:bg-hoverc/10"
               >
                 <span className="font-bold hover:text-hoverc">{item.name}</span>
-                <span className="ml-4 opacity-70">
-                  Subscribers: {item.subscriber_count}
-                </span>
               </div>
             ))
           )}
