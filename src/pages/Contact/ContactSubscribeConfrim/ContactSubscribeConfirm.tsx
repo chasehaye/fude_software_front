@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useSearchParams } from 'react-router-dom';
 
 import { contactSubscribeConfirm } from '../../../utils/contact-api';
@@ -8,15 +8,11 @@ function ContactSubscribeConfirm() {
   const token = searchParams.get('token');
   const listId = searchParams.get('list_id');
 
-  const effectRan = useRef(false);
-
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(false);
   const [success, setSuccess] = useState(false);
 
   useEffect(() => {
-    if (effectRan.current) return;
-    effectRan.current = true;
 
     async function confirm() {
       try {
