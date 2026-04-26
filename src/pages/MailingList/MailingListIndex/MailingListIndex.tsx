@@ -64,7 +64,7 @@ function MailingListIndex() {
       </div>
 
       <div className="p-10 w-full text-center">
-        <h1 className='text-[2rem] text-white pb-2'>Mailing_Lists</h1>
+        <h1 className="text-[2rem] text-white pb-2">Mailing_Lists</h1>
         <div className="w-full text-center">
           {loading ? (
             <p>LOADING_DATA...</p>

@@ -10,7 +10,7 @@ export default async function sendRequest(
   method: HttpMethod = 'GET',
   payload: Payload | null = null
 ): Promise<any> {
-  const BACKEND_URL = import.meta.env.VITE_API_URL; 
+  const BACKEND_URL = import.meta.env.VITE_API_URL;
   let url = `${BACKEND_URL}${endpoint}`;
 
   const options: RequestInit = {

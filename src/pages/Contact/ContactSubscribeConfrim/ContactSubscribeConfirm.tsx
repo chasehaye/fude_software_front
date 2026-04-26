@@ -13,7 +13,6 @@ function ContactSubscribeConfirm() {
   const [success, setSuccess] = useState(false);
 
   useEffect(() => {
-
     async function confirm() {
       try {
         if (!token || !listId) {

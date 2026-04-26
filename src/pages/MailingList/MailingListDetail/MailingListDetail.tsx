@@ -153,11 +153,11 @@ function MailingListDetail() {
             </p>
           </Link>
         </div>
-        <div className='flex flex-col lg:flex-row-reverse mt-10 pt-10 border-t border-edge justify-center gap-x-10'>
+        <div className="flex flex-col lg:flex-row-reverse mt-10 pt-10 border-t border-edge justify-center gap-x-10">
           <div className="flex flex-col md:flex-row justify-center items-start lg:w-[50%] pb-10">
             <SendMail />
-          </div> 
-          <div className='flex flex-col md:flex-row justify-center items-start lg:w-[50%]'>
+          </div>
+          <div className="flex flex-col md:flex-row justify-center items-start lg:w-[50%]">
             <div className="flex flex-col w-full gap-4">
               {list?.messages?.map((msg) => (
                 <div key={msg.id} className="border border-edge p-3">
