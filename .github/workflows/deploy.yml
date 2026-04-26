@@ -31,5 +31,3 @@ jobs:
             ./toggle_sites.sh 1
 
             echo "Deploy complete."
-
-            
