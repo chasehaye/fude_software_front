@@ -27,9 +27,8 @@ jobs:
 
             echo "Reloading site..."
             cd /srv/webserver-front
-            ./toggle_sites.sh 0
-            ./toggle_sites.sh 1
+            ./handle_service.sh 0
+            ./handle_service.sh 1
 
             echo "Deploy complete."
 
-            
