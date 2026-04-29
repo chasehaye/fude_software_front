@@ -138,7 +138,7 @@ function MailingListDetail() {
           )}
         </div>
 
-        <div className="mt-8">
+        <div className="mt-8 mx-">
           <p>Internal_Name: {list?.name}</p>
           <p>Public_Name: {list?.public_facing_name}</p>
           <p>Subscriber_Count: {list?.subscribers?.length}</p>

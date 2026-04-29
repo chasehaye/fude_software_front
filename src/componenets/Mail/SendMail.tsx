@@ -56,7 +56,7 @@ function SendMail() {
     <form
       autoComplete="off"
       onSubmit={handleSubmit}
-      className="flex flex-col gap-4 w-full max-w-80"
+      className="flex flex-col gap-4 w-full max-w-80 mx-auto"
     >
       <FormHeader text={'Send Mail to Subscribers:'} />
       <FormField
