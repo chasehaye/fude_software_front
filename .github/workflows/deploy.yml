@@ -19,14 +19,17 @@ jobs:
           script: |
             set -e
 
+            APP_DIR="${{ secrets.APP_DIR }}"
+            ROOT_DIR="${{ secrets.ROOT_DIR }}"
+
             echo "Pulling latest changes and building..."
-            cd /srv/webserver-front/nginx/sites/fudesoftware
+            cd "$APP_DIR"
             git pull origin main
             npm install
             npm run build
 
             echo "Reloading site..."
-            cd /srv/webserver-front
+            cd "$ROOT_DIR"
             ./handle_service.sh 0
             ./handle_service.sh 1
 
