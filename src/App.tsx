@@ -9,6 +9,7 @@ import ResetPassword from './pages/Auth/ResetPassword/ResetPassword.tsx';
 import SignUp from './pages/Auth/SignUp/SignUp.tsx';
 import ContactSubscribe from './pages/Contact/ContactSubscribe/ContactSubscribe.tsx';
 import ContactSubscribeConfirm from './pages/Contact/ContactSubscribeConfrim/ContactSubscribeConfirm.tsx';
+import ContactUnsubscribe from './pages/Contact/ContactUnsubscribe/ContactUnsubscribe.tsx';
 import DashBoard from './pages/Home/Dashboard/Dashboard.tsx';
 import Landing from './pages/Home/Landing/Landing.tsx';
 import MailingListCreate from './pages/MailingList/MailingListCreate/MailingListCreate.tsx';
@@ -16,7 +17,6 @@ import MailingListDetail from './pages/MailingList/MailingListDetail/MailingList
 import MailingListIndex from './pages/MailingList/MailingListIndex/MailingListIndex.tsx';
 import MaintenancePage from './pages/MaintenancePage/MaintenancePage.tsx';
 import Profile from './pages/ProfilePage/ProfilePage.tsx';
-import ContactUnsubscribe from './pages/Contact/ContactUnsubscribe/ContactUnsubscribe.tsx';
 
 function App() {
   const { user, loading } = useUser();
@@ -37,7 +37,7 @@ function App() {
           element={<ContactSubscribeConfirm />}
         />
         <Route path="/unsubscribe" element={<ContactUnsubscribe />} />
- 
+
         {!user ? (
           <>
             <Route path="/" element={<Landing />} />
