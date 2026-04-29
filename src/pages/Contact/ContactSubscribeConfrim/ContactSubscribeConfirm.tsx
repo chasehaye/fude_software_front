@@ -19,11 +19,10 @@ function ContactSubscribeConfirm() {
           setError(true);
           return;
         }
-        const data = await contactSubscribeConfirm({
+        await contactSubscribeConfirm({
           token: token,
           list_id: listId,
         });
-        console.log(data);
         setSuccess(true);
       } catch {
         setError(true);

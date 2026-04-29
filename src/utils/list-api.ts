@@ -17,3 +17,7 @@ export function getList(id: string) {
 export function deleteList(id: string) {
   return sendRequest(`${BASE_URL}/delete/${id}`, 'DELETE');
 }
+
+export function getListName(list_id:string){
+  return sendRequest(`${BASE_URL}/${list_id}`, 'GET');
+}

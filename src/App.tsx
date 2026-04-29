@@ -16,6 +16,7 @@ import MailingListDetail from './pages/MailingList/MailingListDetail/MailingList
 import MailingListIndex from './pages/MailingList/MailingListIndex/MailingListIndex.tsx';
 import MaintenancePage from './pages/MaintenancePage/MaintenancePage.tsx';
 import Profile from './pages/ProfilePage/ProfilePage.tsx';
+import ContactUnsubscribe from './pages/Contact/ContactUnsubscribe/ContactUnsubscribe.tsx';
 
 function App() {
   const { user, loading } = useUser();
@@ -35,6 +36,8 @@ function App() {
           path="/confirm-subscription"
           element={<ContactSubscribeConfirm />}
         />
+        <Route path="/unsubscribe" element={<ContactUnsubscribe />} />
+ 
         {!user ? (
           <>
             <Route path="/" element={<Landing />} />

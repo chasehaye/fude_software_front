@@ -13,3 +13,7 @@ export function contactSubscribe(payload: SubscriberPayload, listId: string) {
 export function contactSubscribeConfirm(payload: SubscriberPayload) {
   return sendRequest(`${BASE_URL}/signup/confirm`, 'GET', payload);
 }
+
+export function contactUnsubscribe(payload: SubscriberPayload, listId: string){
+  return sendRequest(`${BASE_URL}/remove/${listId}`, 'DELETE', payload);
+}
