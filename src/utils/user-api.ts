@@ -38,10 +38,14 @@ export function updateUsername(userData: UserData) {
   return sendRequest(`${BASE_URL}/change/username`, 'PUT', userData);
 }
 
-export function updateEmail(userData: UserData) {
-  return sendRequest(`${BASE_URL}/change/email`, 'PUT', userData);
+export function updateEmailRequest(userData: UserData) {
+  return sendRequest(`${BASE_URL}/change/email`, 'PATCH', userData);
 }
 
 export function deleteUser(userData: UserData) {
   return sendRequest(`${BASE_URL}/account/delete`, 'DELETE', userData);
+}
+
+export function updateEmailConfirm(userData: UserData) {
+  return sendRequest(`${BASE_URL}/change/email/confirm`, `PUT`, userData);
 }

@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 
 import CancelButton from '../../componenets/CancelButton/CancelButton';
@@ -9,7 +9,12 @@ import FormHeader from '../../componenets/Form/FormHeader/FormHeader';
 import FormSubmitButton from '../../componenets/Form/FormSubmitButton/FormSubmitButton';
 import NavBar from '../../componenets/NavBar/NavBar/NavBar';
 import { useUser } from '../../context/UserContext';
-import { deleteUser, updateEmail, updateUsername } from '../../utils/user-api';
+import { getMe } from '../../utils/user-api';
+import {
+  deleteUser,
+  updateEmailRequest,
+  updateUsername,
+} from '../../utils/user-api';
 
 function Profile() {
   const { user, setUser } = useUser();
@@ -17,6 +22,21 @@ function Profile() {
   const [formData, setFormData] = useState('');
   const [error, setError] = useState('');
   const [status, setStatus] = useState('idle'); // 'idle' | 'deleting' | 'confirming'
+  const [emailPending, setEmailPending] = useState(false);
+
+  useEffect(() => {
+    async function refreshUser() {
+      try {
+        const data = await getMe();
+        setUser(data);
+      } catch {
+        setError('Failed to get user');
+      }
+    }
+
+    refreshUser();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   async function handleDelete() {
     try {
@@ -40,8 +60,9 @@ function Profile() {
 
     try {
       if (type === 'email') {
-        await updateEmail({ email: formData });
-        setUser((prev) => (prev ? { ...prev, user_email: formData } : prev));
+        await updateEmailRequest({ email: formData });
+
+        setEmailPending(true);
 
         setShowChangeForm('');
         setFormData('');
@@ -153,7 +174,7 @@ function Profile() {
       </div>
 
       <div className="flex justify-center mt-4">
-        {showChangeForm === 'email' && (
+        {showChangeForm === 'email' && !emailPending && (
           <form
             onSubmit={(e) => handleSubmit(e, 'email')}
             className="flex flex-col w-80"
@@ -168,9 +189,30 @@ function Profile() {
               isRequired={true}
             />
 
-            <FormSubmitButton buttonText={'Update Email'} isInvalid={false} />
+            <FormSubmitButton
+              buttonText={'Send Verification Email'}
+              isInvalid={false}
+            />
             <FormError errorText={error} />
           </form>
+        )}
+        {emailPending && (
+          <div className="flex flex-col w-80 text-center border p-4 mt-4">
+            <h2 className="font-bold text-lg mb-2">Check your email</h2>
+            <p className="text-sm">
+              We’ve sent a confirmation link to complete your email change.
+            </p>
+
+            <button
+              className="mt-4 underline text-sm"
+              onClick={() => {
+                setEmailPending(false);
+                setShowChangeForm('');
+              }}
+            >
+              Done
+            </button>
+          </div>
         )}
 
         {showChangeForm === 'username' && (

@@ -43,7 +43,7 @@ function ContactUnsubscribe() {
         const data = await getListName(list as string);
 
         setListName(data.name || '');
-      } catch (err) {
+      } catch {
         setListError('Failed to load list name');
       } finally {
         setLoading(false);
@@ -86,7 +86,7 @@ function ContactUnsubscribe() {
         >
           Unsubscribe
         </button>
-        {error && <p className="text-red-500 text-center mt-2">{error}</p>}
+        <p className="text-red-500 text-center mt-2">{error && error}</p>
       </div>
     </div>
   );

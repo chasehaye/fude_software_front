@@ -16,6 +16,7 @@ import MailingListCreate from './pages/MailingList/MailingListCreate/MailingList
 import MailingListDetail from './pages/MailingList/MailingListDetail/MailingListDetail.tsx';
 import MailingListIndex from './pages/MailingList/MailingListIndex/MailingListIndex.tsx';
 import MaintenancePage from './pages/MaintenancePage/MaintenancePage.tsx';
+import EmailChangeConfirm from './pages/ProfilePage/EamilChangeConfirm.tsx';
 import Profile from './pages/ProfilePage/ProfilePage.tsx';
 
 function App() {
@@ -65,6 +66,10 @@ function App() {
             <Route path="/profile" element={<Profile />} />
 
             <Route path="/maintenance" element={<MaintenancePage />} />
+            <Route
+              path="/change-email/confirm"
+              element={<EmailChangeConfirm />}
+            />
           </>
         )}
       </Routes>
