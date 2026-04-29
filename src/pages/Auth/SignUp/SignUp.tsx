@@ -96,11 +96,6 @@ function SignUp() {
           Register
         </div>
       </div>
-      <p className="text-sm mb-6 text-center">
-        {' '}
-        remove me later: should direct to a page for the user to get their api
-        token currently redirects home
-      </p>
       <div className="flex flex-col items-center justify-center flex-grow px-4 mt-10">
         <form
           autoComplete="off"
