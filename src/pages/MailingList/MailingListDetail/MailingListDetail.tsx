@@ -36,6 +36,17 @@ function MailingListDetail() {
   const [list, setList] = useState<MailingListItem | null>(null);
   const apiUrl = import.meta.env.VITE_FRONTEND_URL;
 
+  async function fetchListChild() {
+    try {
+      setStatus('loading');
+      const data = await getList(id as string);
+      setList(data);
+      setStatus('idle');
+    } catch {
+      setStatus('error');
+    }
+  }
+
   useEffect(() => {
     async function fetchList() {
       try {
@@ -155,7 +166,7 @@ function MailingListDetail() {
         </div>
         <div className="flex flex-col lg:flex-row-reverse mt-10 pt-10 border-t border-edge justify-center gap-x-10">
           <div className="flex flex-col md:flex-row justify-center items-start lg:w-[50%] pb-10">
-            <SendMail />
+            <SendMail onSuccess={fetchListChild} />
           </div>
           <div className="flex flex-col md:flex-row justify-center items-start lg:w-[50%]">
             <div className="flex flex-col w-full gap-4">

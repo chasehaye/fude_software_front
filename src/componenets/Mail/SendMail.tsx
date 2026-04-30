@@ -12,8 +12,11 @@ type MailingListFormData = {
   body: string;
   error?: string;
 };
+type SendMailProps = {
+  onSuccess?: () => void;
+};
 
-function SendMail() {
+function SendMail({ onSuccess }: SendMailProps) {
   const { id } = useParams();
   const [loading, setLoading] = useState(false);
   const [formData, setFormData] = useState<MailingListFormData>({
@@ -42,6 +45,7 @@ function SendMail() {
         },
         id!
       );
+      onSuccess?.();
     } catch {
       setFormData({
         ...formData,
