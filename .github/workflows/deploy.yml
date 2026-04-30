@@ -34,5 +34,3 @@ jobs:
             ./handle_service.sh 1
 
             echo "Deploy complete."
-
-            
