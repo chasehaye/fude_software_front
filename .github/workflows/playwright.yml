@@ -44,6 +44,7 @@ jobs:
       - name: Wait for staging healthcheck
         run: |
           echo "Waiting for staging to be ready..."
+          echo "Checking URL: ${{ secrets.STAGING_URL_BACK }}/status"
           for i in {1..30}; do
             curl -fsS ${{ secrets.STAGING_URL_BACK }}/status && echo "Ready!" && exit 0
             sleep 5
