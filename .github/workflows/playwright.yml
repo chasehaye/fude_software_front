@@ -1,0 +1,93 @@
+name: Playwright Tests
+on:
+  pull_request:
+    branches: [ main, master ]
+jobs:
+  test:
+    timeout-minutes: 60
+    runs-on: ubuntu-latest
+
+    steps:
+      # -------------------------
+      # 1. START STAGING ENV ON SERVER
+      # -------------------------
+      - name: Start staging environment
+        uses: appleboy/ssh-action@v1.0.3
+        with:
+          host: ${{ secrets.SERVER_HOST }}
+          username: ${{ secrets.SERVER_USER }}
+          key: ${{ secrets.SERVER_SSH_KEY }}
+          script: |
+            set -e
+
+            APP_DIR="${{ secrets.APP_DIR }}"
+            ROOT_DIR="${{ secrets.ROOT_DIR }}"
+
+            echo "Pulling latest changes and building..."
+            cd "$APP_DIR"
+
+            git fetch origin ${{ github.event.pull_request.head.sha }}
+            git reset --hard ${{ github.event.pull_request.head.sha }}
+            echo "Installing dependencies..."
+            npm ci
+
+            echo "Building STAGING environment..."
+            npm run build:staging
+
+            echo "Starting staging environment..."
+            cd "$ROOT_DIR"
+            ./test_service.sh 0
+            ./test_service.sh 1
+
+            echo "Staging environment ready."
+
+      - name: Wait for staging healthcheck
+        run: |
+          echo "Waiting for staging to be ready..."
+          for i in {1..30}; do
+            curl -fsS https://stagingapi.fudesoftware.com/status && echo "Ready!" && exit 0
+            sleep 5
+          done
+          echo "Staging failed to start"
+          exit 1
+
+
+      # -------------------------
+      # 2. RUN PLAYWRIGHT AGAINST REAL STAGING DOMAIN
+      # -------------------------
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: lts/*
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Install Playwright Browsers
+        run: npx playwright install --with-deps
+
+      - name: Run Playwright tests (staging)
+        env:
+          BASE_URL: ${{ secrets.STAGING_URL_FRONT }}
+        run: npx playwright test
+
+
+      # -------------------------
+      # 3. STOP STAGING ENV (ALWAYS RUN)
+      # -------------------------
+      - name: Stop staging environment
+        if: always()
+        uses: appleboy/ssh-action@v1.0.3
+        with:
+          host: ${{ secrets.SERVER_HOST }}
+          username: ${{ secrets.SERVER_USER }}
+          key: ${{ secrets.SERVER_SSH_KEY }}
+          script: |
+            set -e
+
+            ROOT_DIR="${{ secrets.ROOT_DIR }}"
+
+            echo "Stopping staging environment..."
+            cd "$ROOT_DIR"
+            ./test_service.sh 0
