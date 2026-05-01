@@ -26,7 +26,9 @@ jobs:
             cd "$APP_DIR"
             git pull origin main
             npm install
-            npm run build
+            
+            echo "Building PRODUCTION environment..."
+            npm run build:prod
 
             echo "Reloading site..."
             cd "$ROOT_DIR"
