@@ -26,7 +26,7 @@ jobs:
             cd "$APP_DIR"
             git pull origin main
             npm install
-            
+
             echo "Building PRODUCTION environment..."
             npm run build:prod
 
@@ -36,4 +36,3 @@ jobs:
             ./handle_service.sh 1
 
             echo "Deploy complete."
-            

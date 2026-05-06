@@ -73,9 +73,9 @@ function MailingListIndex() {
               <div
                 key={item.id}
                 onClick={() => navigate(`/mailing-list/${item.id}`)}
-                className="border-b border-edge py-4 cursor-pointer hover:bg-hoverc/10"
+                className="border-b border-edge py-4 cursor-pointer hover:bg-hoverc/10 hover:text-hoverc"
               >
-                <span className="font-bold hover:text-hoverc">{item.name}</span>
+                <span className="font-bold">{item.name}</span>
               </div>
             ))
           )}

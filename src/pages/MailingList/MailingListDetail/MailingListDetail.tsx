@@ -1,3 +1,4 @@
+import { format } from 'date-fns';
 import { useEffect, useState } from 'react';
 import { Link, useParams } from 'react-router-dom';
 
@@ -30,11 +31,21 @@ type MailingListItem = {
   subscribers?: Subscribers[];
 };
 
+const formatDateTime = (value?: string) => {
+  if (!value) return '—';
+
+  const date = new Date(value);
+  if (isNaN(date.getTime())) return '—';
+
+  return format(date, 'p - P');
+};
+
 function MailingListDetail() {
   const { id } = useParams();
   const [status, setStatus] = useState('idle'); // 'idle' | 'deleting' | 'success' | 'confirming'
   const [list, setList] = useState<MailingListItem | null>(null);
   const apiUrl = import.meta.env.VITE_FRONTEND_URL;
+  const [open, setOpen] = useState(false);
 
   async function fetchListChild() {
     try {
@@ -130,34 +141,90 @@ function MailingListDetail() {
     );
   }
 
+  const createdAt = list?.created_at;
+  const updatedAt = list?.updated_at;
+
+  const noActivityYet =
+    createdAt &&
+    updatedAt &&
+    new Date(createdAt).getTime() === new Date(updatedAt).getTime();
   return (
     <>
       <NavBar />
       <div className="p-6">
-        <div className="flex flex-col md:flex-row justify-between items-start border-b border-edge pb-6 pt-10">
+        <div className="flex flex-row justify-between items-start border-b border-edge pb-6 pt-10 mr-4">
           <div className="mb-10 md:mt-0">
-            <h1 className="text-2xl font-bold text-white">Mailing_List</h1>
+            <h1 className="text-2xl font-bold text-white break-all">
+              Internal_Name:
+            </h1>
             <h1 className="text-2xl font-bold text-white">{list?.name}</h1>
-            <p> Public_Name: {list?.public_facing_name}</p>
+            <p> Public_Name:</p>
+            <p>{list?.public_facing_name}</p>
           </div>
-
-          {status === 'idle' && (
-            <DeleteButton
-              onDelete={() => setStatus('confirming')}
-              text="Delete"
+          <svg
+            onClick={() => setOpen(!open)}
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke-width="1.5"
+            stroke="currentColor"
+            className="size-6 hover:text-white cursor-pointer"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              d="M4.5 12a7.5 7.5 0 0 0 15 0m-15 0a7.5 7.5 0 1 1 15 0m-15 0H3m16.5 0H21m-1.5 0H12m-8.457 3.077 1.41-.513m14.095-5.13 1.41-.513M5.106 17.785l1.15-.964m11.49-9.642 1.149-.964M7.501 19.795l.75-1.3m7.5-12.99.75-1.3m-6.063 16.658.26-1.477m2.605-14.772.26-1.477m0 17.726-.26-1.477M10.698 4.614l-.26-1.477M16.5 19.794l-.75-1.299M7.5 4.205 12 12m6.894 5.785-1.149-.964M6.256 7.178l-1.15-.964m15.352 8.864-1.41-.513M4.954 9.435l-1.41-.514M12.002 12l-3.75 6.495"
             />
+          </svg>
+          {open && (
+            <div className="fixed inset-0 flex items-center justify-center bg-black z-50">
+              <div className="w-64 bg-black border border-edge pt-4 pb-10 p-2">
+                <button
+                  onClick={() => setOpen(false)}
+                  className="w-full text-center mt-4 hover:text-white "
+                >
+                  Return Back to List
+                </button>
+                {status === 'idle' && (
+                  <div className="w-full flex justify-center mt-10">
+                    <DeleteButton
+                      onDelete={() => setStatus('confirming')}
+                      text="Delete"
+                    />
+                  </div>
+                )}
+              </div>
+            </div>
           )}
         </div>
 
         <div className="mt-8 mx-">
-          <p>Internal_Name: {list?.name}</p>
-          <p>Public_Name: {list?.public_facing_name}</p>
-          <p>Subscriber_Count: {list?.subscribers?.length}</p>
-          <p className="break-words">Created_At: {list?.created_at}</p>
-          <p className="break-words">Public_ID: {list?.public_id}</p>
+          <p className="break-words">
+            <span className="text-white">
+              Created At: <br className="sm:hidden" />
+            </span>
+            {formatDateTime(list?.created_at)}
+          </p>
+
+          <p>
+            <span className="text-white">
+              Subscriber Count: <br className="sm:hidden" />
+            </span>
+            {list?.subscribers?.length ?? 0}
+          </p>
+
+          <p className="break-words">
+            <span className="text-white">
+              Last Message Sent At: <br className="sm:hidden" />
+            </span>
+            {noActivityYet
+              ? 'No messages sent yet'
+              : formatDateTime(list?.updated_at)}
+          </p>
           <Link to={`/subscribe/${list?.public_id}`}>
             <p className="break-words">
-              Subscribe_To_List_Link:{' '}
+              <span className="text-white">Subscribe Link: </span>{' '}
+              <br className="sm:hidden" />
               <span className="hover:text-white">
                 {apiUrl}/subscribe/{list?.public_id}
               </span>
