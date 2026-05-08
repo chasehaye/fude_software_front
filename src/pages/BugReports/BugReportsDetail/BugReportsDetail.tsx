@@ -4,7 +4,6 @@ import { Link, useParams } from 'react-router-dom';
 
 import CancelButton from '../../../componenets/CancelButton/CancelButton';
 import DeleteButton from '../../../componenets/DeleteButton/DeleteButton';
-import SendMail from '../../../componenets/Mail/SendMail.tsx';
 import NavBar from '../../../componenets/NavBar/NavBar/NavBar.tsx';
 import { deleteList, getList } from '../../../utils/list-api.ts';
 
@@ -14,40 +13,39 @@ type Message = {
   body: string;
 };
 
-type Subscribers = {
-  email: string;
-};
-
-type MailingListItem = {
+type BugReportItem = {
   id: number;
   name: string;
   public_facing_name: string;
-  list_type: string;
   created_at: string;
-  updated_at: string;
-  subscriber_count: number;
   public_id?: string;
   messages?: Message[];
-  subscribers?: Subscribers[];
 };
 
 const formatDateTime = (value?: string) => {
   if (!value) return '—';
-
   const date = new Date(value);
   if (isNaN(date.getTime())) return '—';
-
   return format(date, 'p - P');
 };
 
-function MailingListDetail() {
+function BugReportDetail() {
   const { id } = useParams();
-  const [status, setStatus] = useState('idle'); // 'idle' | 'deleting' | 'success' | 'confirming'
-  const [list, setList] = useState<MailingListItem | null>(null);
-  const apiUrl = import.meta.env.VITE_FRONTEND_URL;
+  const [status, setStatus] = useState('idle');
+  const [list, setList] = useState<BugReportItem | null>(null);
   const [open, setOpen] = useState(false);
-
   const cancelledRef = useRef(false);
+
+  const apiUrl = import.meta.env.VITE_API_URL;
+  const [copied, setCopied] = useState(false);
+
+  function handleCopy() {
+    navigator.clipboard.writeText(
+      `${apiUrl}/api/public/send/message/${list?.public_id}`
+    );
+    setCopied(true);
+    setTimeout(() => setCopied(false), 2000);
+  }
 
   const fetchList = useCallback(async () => {
     try {
@@ -79,7 +77,7 @@ function MailingListDetail() {
       await deleteList(id as string);
       setStatus('success');
     } catch {
-      alert('Failed to delete the list. Please try again.');
+      alert('Failed to delete. Please try again.');
       setStatus('idle');
     }
   }
@@ -87,34 +85,36 @@ function MailingListDetail() {
   if (status === 'success') {
     return (
       <>
+        <NavBar />
         <div className="flex flex-col items-center justify-center h-64 text-center">
           <h2 className="text-2xl font-bold mb-2">Deleted</h2>
           <p className="mb-6">
-            Mailing list{' '}
-            <span className="text-white text-bold">_{list?.name}_</span> has
+            Bug report <span className="text-white">_{list?.name}_</span> has
             been removed.
           </p>
           <Link
-            to="/mailing-list/index"
+            to="/bug-report/index"
             className="text-white hover:underline font-medium"
           >
-            Return to Mailing Lists
+            Return to Bug Reports
           </Link>
         </div>
       </>
     );
   }
+
   if (status === 'deleting') {
     return (
       <>
         <NavBar />
         <div className="flex flex-col items-center justify-center h-64 animate-pulse">
           <div className="w-12 h-12 border-4 border-red-600 border-t-transparent rounded-full animate-spin mb-4"></div>
-          <h2 className="text-xl font-semibold">Deleting List...</h2>
+          <h2 className="text-xl font-semibold">Deleting...</h2>
         </div>
       </>
     );
   }
+
   if (status === 'confirming') {
     return (
       <>
@@ -124,8 +124,8 @@ function MailingListDetail() {
             Are you absolutely sure?
           </h2>
           <p className="mb-4">
-            This will permanently delete the list and all associated subscribers
-            and messages.
+            This will permanently delete the bug report and all associated
+            messages.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 w-full justify-center">
             <DeleteButton
@@ -134,7 +134,7 @@ function MailingListDetail() {
             />
             <CancelButton
               onCancel={() => setStatus('idle')}
-              text="No, Keep List"
+              text="No, Keep It"
             />
           </div>
         </div>
@@ -142,25 +142,52 @@ function MailingListDetail() {
     );
   }
 
-  const createdAt = list?.created_at;
-  const updatedAt = list?.updated_at;
+  if (status === 'loading') {
+    return (
+      <>
+        <NavBar />
+        <div className="flex items-center justify-center h-64">
+          <div className="w-12 h-12 border-4 border-white border-t-transparent rounded-full animate-spin"></div>
+        </div>
+      </>
+    );
+  }
 
-  const noActivityYet =
-    createdAt &&
-    updatedAt &&
-    new Date(createdAt).getTime() === new Date(updatedAt).getTime();
+  if (status === 'error') {
+    return (
+      <>
+        <NavBar />
+        <div className="flex items-center justify-center h-64">
+          <p>Failed to load bug report.</p>
+        </div>
+      </>
+    );
+  }
+
   return (
     <>
       <NavBar />
       <div className="p-6">
-        <div className="flex flex-row justify-between items-start border-b border-edge pb-6 pt-10 mr-4">
-          <div className="mb-10 md:mt-0">
-            <h1 className="text-2xl font-bold text-white break-all">
-              Internal_Name:
-            </h1>
+        <div className="flex flex-row justify-between items-start border-b border-edge pb-6 pt-10">
+          <div>
             <h1 className="text-2xl font-bold text-white">{list?.name}</h1>
-            <p> Public_Name:</p>
             <p>{list?.public_facing_name}</p>
+            <p className="text-sm opacity-60">
+              Created: {formatDateTime(list?.created_at)}
+            </p>
+            <p className="break-words">
+              <span className="text-white">API_ENDPOINT: </span>{' '}
+              <br className="sm:hidden" />
+              <span
+                onClick={handleCopy}
+                className="hover:text-white cursor-pointer"
+              >
+                {apiUrl}/api/public/send/message/{list?.public_id}
+              </span>
+            </p>
+            {copied && (
+              <span className="text-hoverc ml-2">Copied to clipboard!</span>
+            )}
           </div>
           <svg
             onClick={() => setOpen(!open)}
@@ -182,9 +209,9 @@ function MailingListDetail() {
               <div className="w-64 bg-black border border-edge pt-4 pb-10 p-2">
                 <button
                   onClick={() => setOpen(false)}
-                  className="w-full text-center mt-4 hover:text-white "
+                  className="w-full text-center mt-4 hover:text-white"
                 >
-                  Return Back to List
+                  Return Back
                 </button>
                 {status === 'idle' && (
                   <div className="w-full flex justify-center mt-10">
@@ -199,57 +226,20 @@ function MailingListDetail() {
           )}
         </div>
 
-        <div className="mt-8 mx-">
-          <p className="break-words">
-            <span className="text-white">
-              Created At: <br className="sm:hidden" />
-            </span>
-            {formatDateTime(list?.created_at)}
-          </p>
-
-          <p>
-            <span className="text-white">
-              Subscriber Count: <br className="sm:hidden" />
-            </span>
-            {list?.subscribers?.length ?? 0}
-          </p>
-
-          <p className="break-words">
-            <span className="text-white">
-              Last Message Sent At: <br className="sm:hidden" />
-            </span>
-            {noActivityYet
-              ? 'No messages sent yet'
-              : formatDateTime(list?.updated_at)}
-          </p>
-          <Link to={`/subscribe/${list?.public_id}`}>
-            <p className="break-words">
-              <span className="text-white">Subscribe Link: </span>{' '}
-              <br className="sm:hidden" />
-              <span className="hover:text-white">
-                {apiUrl}/subscribe/{list?.public_id}
-              </span>
-            </p>
-          </Link>
-        </div>
-        <div className="flex flex-col lg:flex-row-reverse mt-10 pt-10 border-t border-edge justify-center gap-x-10">
-          <div className="flex flex-col md:flex-row justify-center items-start lg:w-[50%] pb-10">
-            <SendMail onSuccess={fetchList} />
-          </div>
-          <div className="flex flex-col md:flex-row justify-center items-start lg:w-[50%]">
-            <div className="flex flex-col w-full gap-4">
-              {list?.messages?.map((msg) => (
-                <div key={msg.id} className="border border-edge p-3">
-                  <p className="font-semibold">{msg.header}</p>
-                  <p className="text-sm opacity-80">{msg.body}</p>
-                </div>
-              ))}
+        <div className="flex flex-col w-full gap-4 mt-8">
+          {list?.messages?.length === 0 && (
+            <p className="opacity-60">No messages yet.</p>
+          )}
+          {list?.messages?.map((msg) => (
+            <div key={msg.id} className="border border-edge p-3">
+              <p className="font-semibold">{msg.header}</p>
+              <p className="text-sm opacity-80">{msg.body}</p>
             </div>
-          </div>
+          ))}
         </div>
       </div>
     </>
   );
 }
 
-export default MailingListDetail;
+export default BugReportDetail;

@@ -1,48 +1,41 @@
-import { Link, useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 import { useUser } from '../../../context/UserContext';
 
 function MobileMenu() {
-  const navigate = useNavigate();
   const { logoutUser } = useUser();
   return (
     <div className="w-full sm:hidden">
-      <div
-        onClick={() => navigate('/maintenance')}
-        className="flex-1 border-b border-edge py-4 text-center text-md truncate"
+      <Link
+        to="/api/info"
+        className="block w-full border-b border-edge py-4 text-center text-md truncate"
       >
         API_Management
-      </div>
-      <div
-        onClick={() => navigate('/maintenance')}
-        className="flex-1 border-b border-edge py-4 text-center text-md truncate"
-      >
-        Manage_Account
-      </div>
-      <div
-        onClick={() => navigate('/mailing-list/index')}
-        className="flex-1 border-b border-edge py-4 text-center text-md truncate"
+      </Link>
+      <Link
+        to="/mailing-list/index"
+        className="block w-full border-b border-edge py-4 text-center text-md truncate"
       >
         Mailing_List
-      </div>
-      <div
-        onClick={() => navigate('/maintenance')}
-        className="flex-1 border-b border-edge py-4 text-center text-md truncate"
+      </Link>
+      <Link
+        to="/inquiries/index"
+        className="block w-full border-b border-edge py-4 text-center text-md truncate"
       >
         Inbound_Inquires
-      </div>
-      <div
-        onClick={() => navigate('/maintenance')}
-        className="flex-1 border-b border-edge py-4 text-center text-md truncate"
+      </Link>
+      <Link
+        to="/bug-report/index"
+        className="block w-full border-b border-edge py-4 text-center text-md truncate"
       >
         Bug_Reports
-      </div>
-      <div
-        onClick={() => navigate('/maintenance')}
-        className="flex-1 border-b border-edge py-4 text-center text-md truncate"
+      </Link>
+      <Link
+        to="/service-status"
+        className="block w-full border-b border-edge py-4 text-center text-md truncate"
       >
         Service_Status
-      </div>
+      </Link>
       <Link
         to="/profile"
         className="flex-1 border-b border-edge py-4 text-center text-md truncate block"
@@ -51,7 +44,7 @@ function MobileMenu() {
       </Link>
       <div
         onClick={logoutUser}
-        className="flex-1 border-b border-edge py-4 text-center text-md truncate"
+        className="block w-full border-b border-edge py-4 text-center text-md truncate"
       >
         [logout]
       </div>

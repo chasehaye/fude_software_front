@@ -1,11 +1,10 @@
 import { useRef, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 import MobileMenu from '../MobileMenu/MobileMenu.tsx';
 import UserDropDown from '../UserDropDown/UserDropDown.tsx';
 
 function NavBar() {
-  const navigate = useNavigate();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const timeoutRef = useRef<number | null>(null);
 
@@ -42,12 +41,12 @@ function NavBar() {
           />
         </svg>
 
-        <div
-          onClick={() => navigate('/')}
+        <Link
+          to="/"
           className="uppercase select-none antialiased text-hoverc cursor-pointer"
         >
           fude software
-        </div>
+        </Link>
 
         <div></div>
       </nav>
@@ -55,52 +54,46 @@ function NavBar() {
       {isMobileMenuOpen && <MobileMenu />}
 
       <nav className="hidden sm:flex justify-between h-14 border-b border-edge">
-        <div
-          onClick={() => navigate('/')}
+        <Link
+          to="/"
           className="w-[20%] border-r border-edge pt-3 pl-10 text-lg text-hoverc cursor-pointer"
         >
           FUDE<span className="hidden lg:inline">_SOFTWARE</span>
-        </div>
+        </Link>
         <div className="flex justify-between w-[70%] border-edge cursor-pointer">
-          <div
-            onClick={() => navigate('/maintenance')}
+          <Link
+            to="/api/info"
             className="flex-1 border-l border-edge pt-4 text-center text-xs truncate hover:bg-hoverc/10 cursor-pointer"
           >
             API<span className="hidden lg:inline">_Management</span>
-          </div>
-          <div
-            onClick={() => navigate('/maintenance')}
-            className="flex-1 border-l border-edge pt-4 text-center text-xs truncate hover:bg-hoverc/10 cursor-pointer"
-          >
-            <span className="hidden lg:inline">Manage_</span>Account
-          </div>
-          <div
-            onClick={() => navigate('/mailing-list/index')}
+          </Link>
+          <Link
+            to="/mailing-list/index"
             className="flex-1 border-l border-edge pt-4 text-center text-xs truncate hover:bg-hoverc/10 cursor-pointer"
           >
             Mailing<span className="hidden lg:inline">_List</span>
-          </div>
-          <div
-            onClick={() => navigate('/maintenance')}
+          </Link>
+          <Link
+            to="/inquiries/index"
             className="flex-1 border-l border-edge pt-4 text-center text-xs truncate hover:bg-hoverc/10 cursor-pointer"
           >
             <span className="lg:hidden">Inquiries</span>
             <span className="hidden lg:inline">Inbound_Inquires</span>
-          </div>
-          <div
-            onClick={() => navigate('/maintenance')}
+          </Link>
+          <Link
+            to="/bug-report/index"
             className="flex-1 border-l border-edge pt-4 text-center text-xs truncate hover:bg-hoverc/10 cursor-pointer"
           >
             <span className="lg:hidden">Bugs</span>
             <span className="hidden lg:inline">Bug_Reports</span>
-          </div>
-          <div
-            onClick={() => navigate('/maintenance')}
+          </Link>
+          <Link
+            to="/service-status"
             className="flex-1 border-l border-edge pt-4 text-center text-xs truncate hover:bg-hoverc/10 cursor-pointer"
           >
-            <span className="lg:hidden">Services</span>
+            <span className="lg:hidden">Status</span>
             <span className="hidden lg:inline">Service_Status</span>
-          </div>
+          </Link>
           <div
             className="border-l border-edge w-[6%] flex items-center justify-center"
             onMouseEnter={handleMouseEnter}

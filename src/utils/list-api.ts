@@ -21,3 +21,15 @@ export function deleteList(id: string) {
 export function getListName(list_id: string) {
   return sendRequest(`${BASE_URL}/${list_id}`, 'GET');
 }
+
+export function indexProjectsBugReports(
+  payload: Record<string, string | number>
+) {
+  return sendRequest(`${BASE_URL}/index/project/bug-report`, 'GET', payload);
+}
+
+export function indexProjectsInquiries(
+  payload: Record<string, string | number>
+) {
+  return sendRequest(`${BASE_URL}/index/project/inquiries`, 'GET', payload);
+}
